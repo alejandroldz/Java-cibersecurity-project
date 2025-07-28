@@ -1,4 +1,18 @@
-##Projeto SC
+This project aims to familiarize and practise some of the problems involved in programming secure distributed application, namely cryptographic key management, secure digest generation, remote attestation, ciphers and digital signatures, and the use of secure channels. 
+
+The assignment consists of implementing a simplified file storage system, called mySharing, where the user relies on a central server to store and, if desired, share their files.
+
+The mySharingClient is responsible for sending and receiving files to/from the server. This program is executed on each client machine and requires the identification of a unique user (for example, user alan). For a client to send, receive, or delete files from the server, the user must first authenticate with the server.
+
+The mySharingServer implements the concept of a workspace, where each workspace may belong to a single user or be shared by multiple users 
+
+Users can have access to multiple workspaces. Thus, a user with access to a given workspace can access, modify, or delete the files stored there. Each workspace has one, and only one, owner. Only the owner can add other users to that workspace. 
+
+The mySharingClient application aims to enable user interaction with the mySharingServer. It must allow the creation of workspaces, the addition of users to workspaces, file uploading, file downloading, and file deletion on the server. To use all these functionalities, the mySharingClient application must implement a simple command-line interface for user interaction.
+
+The server application mySharingServer is a program that allows simultaneous connections with multiple clients, maintains information about files, workspaces, and registered users, authenticates and identifies users, and enables file collection and sharing among the various clients.
+
+
 
 How to compile: 
 javac -d out src/server/*.java
@@ -40,7 +54,7 @@ keytool -genkeypair -alias server -keyalg RSA -keysize 2048 -validity 365 -keyst
 Export server certificate
 keytool -exportcert -alias server -keystore certificates/server_keystore.jks -file certificates/server_cert.cer -storepass serverpass
 
-Criar a truststore e importar o certificado do servidor
+Create the truststore and import the server's certificate
 keytool -importcert -alias server -file certificates/server_cert.cer -keystore certificates/truststore.jks -storepass trustpass -noprompt
 
 
